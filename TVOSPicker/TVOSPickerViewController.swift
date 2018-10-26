@@ -179,7 +179,6 @@ public class TVOSPickerViewController: UIViewController, UICollectionViewDelegat
     flow?.scrollDirection = .horizontal
 
     // Cancel button
-    cancelButton.setTitle(NSLocalizedString("Cancel", comment: "Cancel button title"), for: .normal)
     cancelButton.addTarget(self, action: #selector(cancelButtonPressed(sender:)), for: .primaryActionTriggered)
 
     // Setup focus guide
@@ -303,10 +302,11 @@ extension UIViewController: TVOSPickerViewControllerDelegate {
     pickerViewControllerDidPressCancelButton(pickerViewController)
   }
 
-  public func presentPicker(title: String, subtitle: String? = nil, dataSource: [String], initialSelection: Int = 0, onSelectItem: @escaping TVOSPickerHandler) {
+  public func presentPicker(title: String, subtitle: String? = nil, cancelTitle: String, dataSource: [String], initialSelection: Int = 0, onSelectItem: @escaping TVOSPickerHandler) {
     let picker = TVOSPickerViewController()
     picker.titleLabel.text = title
     picker.subtitleLabel.text = subtitle
+    picker.cancelButton.setTitle(cancelTitle, for: .normal)
     picker.dataSource = dataSource
     picker.defaultSelectedItemIndex = initialSelection
     picker.delegate = self

@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     presentPicker(
       title: "Example Picker",
       subtitle: "Some optional explanation message about what this picker picks",
+      cancelTitle: "Dismiss",
       dataSource: dataSource,
       initialSelection: 0,
       onSelectItem: { item, index in
